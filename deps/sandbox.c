@@ -927,7 +927,7 @@ int main(int sandbox_argc, char **sandbox_argv) {
     int result = sandbox_main("/tmp", new_cd, sandbox_argc, sandbox_argv);
 
     // Send the exit status over to Julia, then close the sidechannel socket
-    check(sizeof(int) == write(cmdline_fd, &result, sizeof(int)))
+    check(sizeof(int) == write(cmdline_fd, &result, sizeof(int)));
     close(cmdline_fd);
 
     // Don't forget to `sync()` so that we don't lose any pending writes to the filesystem!
