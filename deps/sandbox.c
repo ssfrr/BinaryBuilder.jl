@@ -333,7 +333,7 @@ static void mount_workspaces(struct map_list * workspaces, const char * dest) {
 
     if (strncmp("9p/", current_entry->outside_path, 3) == 0) {
       // If we're running as init within QEMU, the workspace is a plan 9 mount
-      check(0 == mount(current_entry->outside_path+3, path, "9p", 0, "trans=virtio,version=9p2000.L"));
+      check(0 == mount(current_entry->outside_path+3, path, "9p", 0, "trans=virtio,version=9p2000.L,cache=loose"));
     } else {
       // We don't expect workspace to have any submounts in normal operation.
       // However, for runshell(), workspace could be an arbitrary directory,
