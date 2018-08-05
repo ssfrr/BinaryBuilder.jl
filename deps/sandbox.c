@@ -928,7 +928,6 @@ int main(int sandbox_argc, char **sandbox_argv) {
 
     // Send the exit status over to Julia, then close the sidechannel socket
     check(sizeof(int) == write(cmdline_fd, &result, sizeof(int)));
-    printf("EAT THE FOOD (%d sent)\n", sizeof(int));
 
     // Don't forget to `sync()` so that we don't lose any pending writes to the filesystem!
     sync();
